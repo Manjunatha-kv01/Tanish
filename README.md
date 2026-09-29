@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # ✨ Naming Ceremony Invitation ✨
 
 An interactive, responsive digital invitation single-page web application designed for the **Baby Naming Ceremony** of **Chaitra & Chethan**.
@@ -121,3 +122,7 @@ To update the venue address or Google Maps destination, edit the venue tab secti
 
 * **Author**: Adarsh VD / Manjunath KV
 * **Event**: Baby Naming Ceremony — Chaitra & Chethan
+=======
+# Tanish
+my world
+>>>>>>> 768a7e76c5c4fe8e67af1dbe66e10d11fb5f8e02
