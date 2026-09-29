@@ -14,7 +14,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;400;500;600;700&family=Great+Vibes&family=Noto+Sans+Kannada:wght@400;600&family=Noto+Sans+Telugu:wght@400;600&family=Noto+Sans+Tamil:wght@400;600&family=Noto+Sans+Devanagari:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;400;500;600;700&family=Great+Vibes&family=Noto+Sans+Devanagari:wght@400;600&family=Noto+Sans+Kannada:wght@400;600&family=Noto+Sans+Telugu:wght@400;600&family=Noto+Sans+Tamil:wght@400;600&display=swap" rel="stylesheet">
 <style>
 :root{
   --cream:#F4E8C1; --blue:#0B2545; --blue-2:#134074; --blue-dark:#021124;
@@ -32,16 +32,6 @@ img{max-width:100%;display:block}
 button,input,select,textarea{font-family:inherit}
 :focus-visible{outline:3px solid var(--gold);outline-offset:3px}
 .hidden{display:none!important}
-
-/* First-visit language selection */
-.language-screen{position:fixed;inset:0;z-index:10002;display:flex;align-items:center;justify-content:center;padding:24px;background:linear-gradient(135deg,var(--blue),var(--blue-dark));overflow-y:auto}
-.language-panel{width:min(100%,500px);padding:42px 30px;text-align:center;color:#fff;background:rgba(255,255,255,.98);border:1px solid rgba(212,175,55,.5);border-radius:16px;box-shadow:0 20px 60px rgba(0,0,0,.3)}
-.language-panel h1{font-family:'Cinzel',serif;font-size:1.9rem;color:var(--blue);margin-bottom:12px}
-.language-panel p{color:var(--muted);font-size:1rem;line-height:1.6;margin-bottom:26px}
-.language-options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
-.language-btn{width:100%;min-height:52px;padding:13px 16px;border:1px solid rgba(212,175,55,.55);border-radius:10px;background:#fffdf9;color:var(--blue);font:inherit;font-size:1rem;font-weight:600;cursor:pointer;transition:var(--ease)}
-.language-btn:hover{background:var(--blue);color:#fff;transform:translateY(-2px);box-shadow:0 8px 20px rgba(11,37,69,.2)}
-.language-btn:last-child{grid-column:1/-1;width:calc(50% - 6px);justify-self:center}
 
 /* Floating controls */
 .fab{position:fixed;z-index:10001;border:none;cursor:pointer;color:#fff;box-shadow:0 6px 20px rgba(0,0,0,.25);transition:var(--ease)}
@@ -66,6 +56,16 @@ button,input,select,textarea{font-family:inherit}
 .splash-sub{font-weight:300;font-size:1.05rem;letter-spacing:2px;line-height:1.7;color:var(--cream);margin-bottom:40px;opacity:0;animation:fadeBlur 1.2s .7s forwards}
 .open-btn{background:transparent;border:2px solid var(--gold);color:#fff;padding:16px 42px;font-size:.95rem;font-weight:600;letter-spacing:3px;text-transform:uppercase;cursor:pointer;border-radius:50px;opacity:0;animation:fadeUp 1s 1.2s forwards;transition:var(--ease)}
 .open-btn:hover{color:var(--blue);background:#fff;border-color:#fff;box-shadow:0 0 30px rgba(255,255,255,.6)}
+
+/* Language chooser */
+.language-screen{position:fixed;inset:0;z-index:20000;display:flex;align-items:center;justify-content:center;overflow-y:auto;padding:24px 16px;background:linear-gradient(135deg,var(--blue),var(--blue-dark))}
+.language-screen.hidden{display:none}
+.language-panel{width:min(100%,500px);margin:auto;padding:36px 28px;text-align:center;background:rgba(255,255,255,.97);border:1px solid rgba(212,175,55,.45);border-radius:16px;box-shadow:0 18px 55px rgba(0,0,0,.28)}
+.language-panel h1{font-family:'Cinzel',serif;font-size:1.8rem;color:var(--blue);margin-bottom:10px}
+.language-panel p{color:var(--muted);line-height:1.6;margin-bottom:24px}
+.language-options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.language-btn{min-height:52px;padding:12px 14px;border:1px solid rgba(212,175,55,.5);border-radius:10px;background:#fff;color:var(--blue);font-size:1rem;font-weight:600;cursor:pointer;transition:var(--ease)}
+.language-btn:hover{background:var(--blue);color:#fff;transform:translateY(-2px);box-shadow:0 6px 18px rgba(11,37,69,.2)}
 
 /* Cover */
 .cover{min-height:100vh;min-height:100svh;display:flex;flex-direction:column;justify-content:space-between;align-items:center;text-align:center;color:#fff;padding:60px 20px 40px;
@@ -205,12 +205,10 @@ textarea.input{resize:vertical;min-height:120px}
   .gallery{grid-template-columns:repeat(auto-fit,minmax(180px,1fr))}
 }
 @media(max-width:600px){
-  .language-screen{padding:16px}
-  .language-panel{padding:32px 20px}
-  .language-panel h1{font-size:1.6rem}
-  .language-panel p{font-size:.95rem;margin-bottom:22px}
-  .language-options{gap:10px}
-  .language-btn{min-height:48px;padding:12px 8px;font-size:.95rem}
+  .language-panel{padding:30px 20px}
+  .language-panel h1{font-size:1.55rem}
+  .language-options{grid-template-columns:1fr;gap:9px}
+  .language-btn{min-height:46px}
   .splash-inner{padding:24px 16px}
   .splash-title{font-size:1.35rem;letter-spacing:2px}.splash-sub{font-size:.88rem;margin-bottom:28px}
   .cover{padding:44px 16px 28px}
@@ -242,25 +240,27 @@ textarea.input{resize:vertical;min-height:120px}
   .cover-names{font-size:2.2rem}.cover-names .amp{font-size:2.6rem}
   .splash-inner{padding-top:18px;padding-bottom:18px}
   .splash-sub{margin-bottom:20px}
+  .language-screen{align-items:flex-start}
+  .language-panel{padding-top:22px;padding-bottom:22px}
 }
 @media(prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
 </style>
 </head>
 <body>
 
-<div class="language-screen" id="language-screen" role="dialog" aria-modal="true" aria-labelledby="language-title">
+<section class="language-screen hidden" id="language-screen" role="dialog" aria-modal="true" aria-labelledby="language-title">
   <div class="language-panel">
     <h1 id="language-title">Welcome</h1>
     <p>Which is your mother tongue?</p>
     <div class="language-options">
-      <button class="language-btn" type="button" data-language="kn" lang="kn">ಕನ್ನಡ</button>
-      <button class="language-btn" type="button" data-language="en" lang="en">English</button>
-      <button class="language-btn" type="button" data-language="hi" lang="hi">हिन्दी</button>
-      <button class="language-btn" type="button" data-language="te" lang="te">తెలుగు</button>
-      <button class="language-btn" type="button" data-language="ta" lang="ta">தமிழ்</button>
+      <button class="language-btn" type="button" data-select-language="kn">ಕನ್ನಡ</button>
+      <button class="language-btn" type="button" data-select-language="en">English</button>
+      <button class="language-btn" type="button" data-select-language="hi">हिन्दी</button>
+      <button class="language-btn" type="button" data-select-language="te">తెలుగు</button>
+      <button class="language-btn" type="button" data-select-language="ta">தமிழ்</button>
     </div>
   </div>
-</div>
+</section>
 
 <select class="fab" id="lang-select" aria-label="Language">
   <option value="en">English</option>
@@ -321,8 +321,6 @@ textarea.input{resize:vertical;min-height:120px}
     </div>
     <div class="actions">
       <a class="btn" id="gcal-btn" target="_blank" rel="noopener noreferrer" data-i18n="addGoogle"></a>
-      <button class="btn alt" id="ics-btn" data-i18n="addIcs"></button>
-      <button class="btn wa" id="share-btn" data-i18n="share"></button>
     </div>
   </header>
 
@@ -342,10 +340,6 @@ textarea.input{resize:vertical;min-height:120px}
         <h4 class="t-title" data-i18n="eventTitle"></h4>
         <p class="t-desc" data-i18n="eventDesc"></p>
       </div>
-      <div class="info-grid">
-        <div class="info"><h5 data-i18n="menuH"></h5><p data-i18n="menuP"></p></div>
-        <div class="info"><h5 data-i18n="dressH"></h5><p data-i18n="dressP"></p></div>
-      </div>
     </section>
 
     <section id="venue" class="card panel">
@@ -353,13 +347,8 @@ textarea.input{resize:vertical;min-height:120px}
       <div class="venue">
         <img src="images/guru.jpg" alt="Sri Swarna Gauri Kalyana Mantapa" loading="lazy">
         <h4 class="venue-name" data-i18n="venueName"></h4>
-        <p class="venue-note" data-i18n="venueNote"></p>
         <a class="btn" target="_blank" rel="noopener noreferrer" data-i18n="maps"
            href="https://www.google.com/maps/search/?api=1&query=Sri+Swarna+Gauri+Kalyana+Mantapa+Madalu+Karnataka"></a>
-        <div class="contacts">
-          <h4 data-i18n="contactTitle"></h4>
-          <div id="contact-list"></div>
-        </div>
       </div>
     </section>
 
@@ -376,17 +365,6 @@ textarea.input{resize:vertical;min-height:120px}
         <div class="field">
           <label for="rsvp-name" data-i18n="fName"></label>
           <input class="input" type="text" id="rsvp-name" required maxlength="50" autocomplete="name">
-        </div>
-        <fieldset class="field">
-          <legend data-i18n="fAttend"></legend>
-          <div class="choices">
-            <label class="choice"><input type="radio" name="attend" value="Yes" checked><span data-i18n="yes"></span></label>
-            <label class="choice"><input type="radio" name="attend" value="No"><span data-i18n="no"></span></label>
-          </div>
-        </fieldset>
-        <div class="field" id="guests-field">
-          <label for="rsvp-guests" data-i18n="fGuests"></label>
-          <select class="input" id="rsvp-guests"></select>
         </div>
         <div class="field">
           <label for="rsvp-wishes" data-i18n="fWishes"></label>
@@ -418,10 +396,6 @@ const EVENT_ENDS_AFTER_HOURS = 12;         // after this, the page switches to "
 const LIVE_URL = '';                       // paste a YouTube/Meet link to show a live-stream button on the day
 const EMAILJS = { publicKey: 'YOUR_PUBLIC_KEY', serviceId: 'YOUR_SERVICE_ID', templateId: 'YOUR_TEMPLATE_ID' };
 // Set the recipient email inside your EmailJS template, so it is not exposed in this page.
-const CONTACTS = [
-  { name: 'Chethan', phone: '91-8970870646' },   // country code + number, no + or spaces
-  { name: 'Chaitra', phone: '91-8970870646' }
-];
 const LOCATION = 'Sri Swarna Gauri Kalyana Mantapa, Madalu, Karnataka';
 const GALLERY = [
   { src: 'images/ma01.jpeg',  caption: 'Our Story — Chapter One' },
@@ -431,137 +405,107 @@ const GALLERY = [
   { src: 'images/ma06.jpeg',  caption: 'Our Story — Chapter Five' }
 ];
 
-/* =====================  TEXT (English / Kannada)  ===================== */
+/* =====================  TEXT (English / Kannada / Hindi / Telugu / Tamil)  ===================== */
 const TEXT = {
   en: {
     splashTitle: '✨ The Naming Ceremony ✨', splashSub: 'Together with our families, we invite you to celebrate',
     open: 'Open Invitation', scroll: 'Scroll for details', dear: 'Dear',
-    invite: 'Your love, blessings, and presence mean the world to our family. We warmly invite you to join us as we celebrate the arrival of our precious little one and gather for the Naming Ceremony. Please bless our newborn baby as this beautiful journey of life begins.',
+    invite: 'Your love, blessings, and presence mean the world to our family. As our elders have chosen the date for our little one’s Naming Ceremony, we warmly invite you and your family to join us and bless our baby.',
     counting: 'Counting down to the ceremony', days: 'Days', hours: 'Hours', mins: 'Mins', secs: 'Secs',
     today: 'Today is the day!', todaySub: 'Join us for the ceremony. Relatives who cannot travel can watch live.', live: 'Watch live',
-    addGoogle: 'Add to Google Calendar', addIcs: 'Download .ics', share: 'Share on WhatsApp',
-    shareMsg: 'You are warmly invited to the Naming Ceremony of our little one, Chaitra & Chethan.',
+    addGoogle: 'Add to Google Calendar',
     tabSchedule: 'Schedule', tabVenue: 'Venue', tabGallery: 'Gallery', tabRsvp: 'RSVP',
     scheduleTitle: 'The Order of Events', onwards: 'onwards',
     eventTitle: 'Naming Ceremony & Family Gathering',
     eventDesc: 'With hearts full of joy and gratitude, we warmly invite you to celebrate the arrival of our precious little one. Join us for blessings, laughter, memorable photographs, a shared meal, and the love of our dear family and friends as we begin this beautiful chapter of parenthood together.',
-    menuH: 'Lunch', menuP: 'A traditional vegetarian lunch will be served after the ceremony.',
-    dressH: 'What to wear', dressP: 'Traditional attire is welcome. Shades of blue and gold will match the celebration.',
     venueTitle: 'The Location', venueName: 'Sri Swarna Gauri Kalyana Mantapa, Madalu',
-    venueNote: 'Add your landmark, distance from Arasikere or Hassan, and parking details here.',
-    maps: 'Open Google Maps', contactTitle: 'Need help finding us?', call: 'Call', chat: 'WhatsApp',
-    galleryTitle: 'Glimpse of Us', rsvpTitle: 'Celebrate With Us', rsvpSub: 'Let us know if you can join, and leave your wishes for our little one.',
-    fName: 'Your name', fAttend: 'Will you attend?', yes: 'Yes, I will come', no: 'Sorry, I cannot',
-    fGuests: 'Number of guests (including you)', fWishes: 'Wishes & blessings (optional)', send: 'Send RSVP', sending: 'Sending...',
+    maps: 'Open Google Maps',
+    galleryTitle: 'Glimpse of Us', rsvpTitle: 'Celebrate With Us', rsvpSub: 'Write your wishes and blessings for our little one.',
+    fName: 'Your name', fWishes: 'Wishes & blessings (optional)', send: 'Send RSVP', sending: 'Sending...',
     thanksH: 'RSVP Received', thanksP: 'Thank you for your love and warm wishes. We are honoured to have you as part of our celebration as we bless our little one.',
     error: 'Your RSVP could not be sent. Please try again.',
     after: 'Thank you for celebrating with us and blessing our little one. Your love means the world to us.',
-    guest: 'Guest'
   },
   hi: {
-    splashTitle: '✨ नामकरण समारोह ✨', splashSub: 'हम अपने परिवारों के साथ आपको इस खुशी के अवसर पर आमंत्रित करते हैं',
-    open: 'निमंत्रण खोलें', scroll: 'विवरण देखने के लिए नीचे स्क्रॉल करें', dear: 'प्रिय',
-    invite: 'आपका प्यार, आशीर्वाद और उपस्थिति हमारे परिवार के लिए बहुत अनमोल है। हमारे नन्हे मेहमान के आगमन की खुशी में आयोजित नामकरण समारोह में शामिल होकर उसे अपना आशीर्वाद दें।',
-    counting: 'समारोह शुरू होने में शेष समय', days: 'दिन', hours: 'घंटे', mins: 'मिनट', secs: 'सेकंड',
-    today: 'आज शुभ दिन है!', todaySub: 'समारोह में हमारे साथ शामिल हों। जो रिश्तेदार नहीं आ सकते, वे लाइव देख सकते हैं।', live: 'लाइव देखें',
-    addGoogle: 'Google Calendar में जोड़ें', addIcs: '.ics डाउनलोड करें', share: 'WhatsApp पर साझा करें',
-    shareMsg: 'आपको हमारे नन्हे मेहमान के नामकरण समारोह में सादर आमंत्रित करते हैं। - चैत्रा और चेतन',
-    tabSchedule: 'कार्यक्रम', tabVenue: 'स्थान', tabGallery: 'तस्वीरें', tabRsvp: 'उत्तर दें',
+    splashTitle: '✨ नामकरण समारोह ✨', splashSub: 'हमारे परिवारों के साथ इस खुशी के अवसर पर आपका स्वागत है',
+    open: 'निमंत्रण खोलें', scroll: 'जानकारी के लिए नीचे स्क्रॉल करें', dear: 'प्रिय',
+    invite: 'आपका प्यार, आशीर्वाद और उपस्थिति हमारे परिवार के लिए अनमोल है। हमारे बड़ों ने नन्हे शिशु के नामकरण समारोह की तिथि तय की है। इस अवसर पर आप सपरिवार पधारें और हमारे बच्चे को आशीर्वाद दें।',
+    counting: 'समारोह तक शेष समय', days: 'दिन', hours: 'घंटे', mins: 'मिनट', secs: 'सेकंड',
+    today: 'आज शुभ दिन है!', todaySub: 'समारोह में हमारे साथ शामिल हों। जो रिश्तेदार यात्रा नहीं कर सकते, वे सीधा प्रसारण देख सकते हैं।', live: 'सीधा प्रसारण देखें',
+    addGoogle: 'Google कैलेंडर में जोड़ें',
+    tabSchedule: 'कार्यक्रम', tabVenue: 'स्थान', tabGallery: 'तस्वीरें', tabRsvp: 'जवाब',
     scheduleTitle: 'कार्यक्रम का क्रम', onwards: 'से',
     eventTitle: 'नामकरण समारोह और पारिवारिक मिलन',
-    eventDesc: 'आनंद और कृतज्ञता से भरे मन के साथ, हम अपने नन्हे मेहमान के आगमन का उत्सव मनाने के लिए आपको आमंत्रित करते हैं। आशीर्वाद, हँसी, यादगार तस्वीरों, साथ भोजन और अपने प्रियजनों के स्नेह के साथ इस सुंदर नई यात्रा की शुरुआत करें।',
-    menuH: 'दोपहर का भोजन', menuP: 'समारोह के बाद पारंपरिक शाकाहारी भोजन परोसा जाएगा।',
-    dressH: 'क्या पहनें', dressP: 'पारंपरिक परिधान पहनकर आएँ। नीले और सुनहरे रंग उत्सव के अनुरूप रहेंगे।',
-    venueTitle: 'समारोह स्थल', venueName: 'श्री स्वर्ण गौरी कल्याण मंडप, मडलु',
-    venueNote: 'यहाँ नज़दीकी पहचान-चिह्न, अरसीकेरे या हासन से दूरी और पार्किंग की जानकारी जोड़ें।',
-    maps: 'Google Maps खोलें', contactTitle: 'रास्ता ढूँढ़ने में मदद चाहिए?', call: 'कॉल करें', chat: 'WhatsApp',
-    galleryTitle: 'हमारी झलकियाँ', rsvpTitle: 'हमारे साथ जश्न मनाएँ', rsvpSub: 'कृपया बताएँ कि आप आ पाएँगे या नहीं और हमारे नन्हे मेहमान के लिए शुभकामनाएँ लिखें।',
-    fName: 'आपका नाम', fAttend: 'क्या आप आएँगे?', yes: 'हाँ, मैं आऊँगा/आऊँगी', no: 'क्षमा करें, नहीं आ पाऊँगा/पाऊँगी',
-    fGuests: 'मेहमानों की संख्या (आप सहित)', fWishes: 'शुभकामनाएँ और आशीर्वाद (वैकल्पिक)', send: 'उत्तर भेजें', sending: 'भेजा जा रहा है...',
-    thanksH: 'उत्तर प्राप्त हुआ', thanksP: 'आपके प्यार और शुभकामनाओं के लिए धन्यवाद। हमारे नन्हे मेहमान को आशीर्वाद देने के लिए आपका साथ हमारे लिए सम्मान की बात है।',
-    error: 'आपका उत्तर नहीं भेजा जा सका। कृपया फिर से प्रयास करें।',
-    after: 'हमारे साथ जश्न मनाने और नन्हे मेहमान को आशीर्वाद देने के लिए धन्यवाद। आपका प्यार हमारे लिए अनमोल है।',
-    guest: 'मेहमान'
+    eventDesc: 'आनंद और कृतज्ञता से भरे मन के साथ, हम अपने नन्हे शिशु के आगमन का जश्न मनाने के लिए आपको सादर आमंत्रित करते हैं। आइए, आशीर्वाद, हँसी, यादगार तस्वीरों, साथ मिलकर भोजन और प्रियजनों के प्यार के बीच माता-पिता के रूप में इस सुंदर नए अध्याय की शुरुआत करें।',
+    venueTitle: 'समारोह का स्थान', venueName: 'श्री स्वर्ण गौरी कल्याण मंडप, मदालु',
+    maps: 'Google Maps खोलें',
+    galleryTitle: 'हमारी यादें', rsvpTitle: 'हमारे साथ जश्न मनाएँ', rsvpSub: 'हमारे नन्हे शिशु के लिए अपनी शुभकामनाएँ और आशीर्वाद लिखें।',
+    fName: 'आपका नाम', fWishes: 'शुभकामनाएँ और आशीर्वाद (वैकल्पिक)', send: 'जवाब भेजें', sending: 'भेजा जा रहा है...',
+    thanksH: 'जवाब मिल गया', thanksP: 'आपके प्यार और शुभकामनाओं के लिए धन्यवाद। हमारे शिशु को आशीर्वाद देने के लिए आप हमारे उत्सव का हिस्सा बनेंगे, यह हमारे लिए सम्मान की बात है।',
+    error: 'आपका जवाब नहीं भेजा जा सका। कृपया फिर से कोशिश करें।',
+    after: 'हमारे साथ जश्न मनाने और नन्हे शिशु को आशीर्वाद देने के लिए धन्यवाद। आपका प्यार हमारे लिए बहुत मायने रखता है।',
   },
   kn: {
-    splashTitle: '✨ ನಾಮಕರಣ ಮಹೋತ್ಸವ ✨', splashSub: 'ನಮ್ಮ ಕುಟುಂಬಗಳೊಂದಿಗೆ ಸಂಭ್ರಮಿಸಲು ನಿಮ್ಮನ್ನು ಆಹ್ವಾನಿಸುತ್ತೇವೆ',
+    splashTitle: '✨ ನಾಮಕರಣ ಸಮಾರಂಭ  ✨', splashSub: 'ನಮ್ಮ ಕುಟುಂಬಗಳೊಂದಿಗೆ ಸಂಭ್ರಮಿಸಲು ನಿಮ್ಮನ್ನು ಆಹ್ವಾನಿಸುತ್ತಿದ್ದೇವೆ ',
     open: 'ಆಹ್ವಾನ ತೆರೆಯಿರಿ', scroll: 'ವಿವರಗಳಿಗಾಗಿ ಕೆಳಗೆ ಸ್ಕ್ರಾಲ್ ಮಾಡಿ', dear: 'ಆತ್ಮೀಯ',
-    invite: 'ನಿಮ್ಮ ಪ್ರೀತಿ, ಆಶೀರ್ವಾದ ಮತ್ತು ಉಪಸ್ಥಿತಿ ನಮ್ಮ ಕುಟುಂಬಕ್ಕೆ ಅಮೂಲ್ಯ. ನಮ್ಮ ಪುಟ್ಟ ಕಂದನ ಆಗಮನದ ಸಂಭ್ರಮದಲ್ಲಿ ನಾಮಕರಣ ಸಮಾರಂಭಕ್ಕೆ ಬಂದು ನವಜಾತ ಶಿಶುವನ್ನು ಆಶೀರ್ವದಿಸಿ.',
-    counting: 'ಸಮಾರಂಭಕ್ಕೆ ಉಳಿದಿರುವ ಸಮಯ', days: 'ದಿನ', hours: 'ಗಂಟೆ', mins: 'ನಿಮಿಷ', secs: 'ಸೆಕೆಂಡ್',
+    invite: 'ನಿಮ್ಮ ಪ್ರೀತಿ, ಆಶೀರ್ವಾದ ಮತ್ತು ಉಪಸ್ಥಿತಿ ನಮ್ಮ ಕುಟುಂಬಕ್ಕೆ ಅಮೂಲ್ಯ. ನಮ್ಮ ಪುಟ್ಟ ಕಂದನ ನಾಮಕರಣ ಸಮಾರಂಭವನ್ನು ನಡೆಸಲು ಗುರು ಹಿರಿಯರು ನಿಶ್ಚಯಿಸಿರುವುದರಿಂದ ತಾವುಗಳು ಕುಟುಂಬ ಸಮೇತರಾಗಿ ಆಗಮಸಿ ಆಶೀರ್ವದಿಸಬೇಕಾಗಿ ಕೋರುತೇವೆ',
+    counting: 'ಸಮಾರಂಭದ  ಸಮಯ', days: 'ದಿನ', hours: 'ಗಂಟೆ', mins: 'ನಿಮಿಷ', secs: 'ಸೆಕೆಂಡ್',
     today: 'ಇಂದೇ ಆ ಶುಭದಿನ!', todaySub: 'ಸಮಾರಂಭಕ್ಕೆ ಬನ್ನಿ. ಬರಲಾಗದ ಬಂಧುಗಳು ನೇರಪ್ರಸಾರ ವೀಕ್ಷಿಸಬಹುದು.', live: 'ನೇರಪ್ರಸಾರ ವೀಕ್ಷಿಸಿ',
-    addGoogle: 'ಗೂಗಲ್ ಕ್ಯಾಲೆಂಡರ್‌ಗೆ ಸೇರಿಸಿ', addIcs: '.ics ಡೌನ್‌ಲೋಡ್', share: 'ವಾಟ್ಸಾಪ್‌ನಲ್ಲಿ ಹಂಚಿಕೊಳ್ಳಿ',
-    shareMsg: 'ನಮ್ಮ ಪುಟ್ಟ ಕಂದನ ನಾಮಕರಣ ಸಮಾರಂಭಕ್ಕೆ ನಿಮಗೆ ಆತ್ಮೀಯ ಆಹ್ವಾನ. - ಚೈತ್ರಾ & ಚೇತನ್',
+    addGoogle: 'ಗೂಗಲ್ ಕ್ಯಾಲೆಂಡರ್‌ಗೆ ಸೇರಿಸಿ',
     tabSchedule: 'ಕಾರ್ಯಕ್ರಮ', tabVenue: 'ಸ್ಥಳ', tabGallery: 'ಗ್ಯಾಲರಿ', tabRsvp: 'ಉತ್ತರ',
     scheduleTitle: 'ಕಾರ್ಯಕ್ರಮದ ವಿವರ', onwards: 'ರಿಂದ',
     eventTitle: 'ನಾಮಕರಣ ಮತ್ತು ಕುಟುಂಬ ಸಮ್ಮಿಲನ',
     eventDesc: 'ಸಂತೋಷ ಮತ್ತು ಕೃತಜ್ಞತೆಯಿಂದ ತುಂಬಿದ ಮನಸ್ಸಿನಿಂದ, ನಮ್ಮ ಮುದ್ದು ಕಂದನ ಆಗಮನವನ್ನು ಆಚರಿಸಲು ನಿಮ್ಮನ್ನು ಆಹ್ವಾನಿಸುತ್ತೇವೆ. ಆಶೀರ್ವಾದ, ನಗು, ನೆನಪಿನ ಫೋಟೋಗಳು, ಸಹಭೋಜನ ಮತ್ತು ಬಂಧು-ಮಿತ್ರರ ಪ್ರೀತಿಯೊಂದಿಗೆ ಪೋಷಕತ್ವದ ಈ ಸುಂದರ ಅಧ್ಯಾಯವನ್ನು ಪ್ರಾರಂಭಿಸೋಣ.',
-    menuH: 'ಊಟ', menuP: 'ಸಮಾರಂಭದ ನಂತರ ಸಾಂಪ್ರದಾಯಿಕ ಸಸ್ಯಾಹಾರಿ ಊಟದ ವ್ಯವಸ್ಥೆ ಇರುತ್ತದೆ.',
-    dressH: 'ಉಡುಗೆ', dressP: 'ಸಾಂಪ್ರದಾಯಿಕ ಉಡುಗೆ ಸ್ವಾಗತಾರ್ಹ. ನೀಲಿ ಮತ್ತು ಚಿನ್ನದ ಬಣ್ಣಗಳು ಸಂಭ್ರಮಕ್ಕೆ ಹೊಂದುತ್ತವೆ.',
-    venueTitle: 'ಸ್ಥಳ', venueName: 'ಶ್ರೀ ಸ್ವರ್ಣ ಗೌರಿ ಕಲ್ಯಾಣ ಮಂಟಪ, ಮಡಲು',
-    venueNote: 'ಇಲ್ಲಿ ಹತ್ತಿರದ ಗುರುತು, ಅರಸೀಕೆರೆ ಅಥವಾ ಹಾಸನದಿಂದ ದೂರ ಮತ್ತು ಪಾರ್ಕಿಂಗ್ ವಿವರ ಸೇರಿಸಿ.',
-    maps: 'ಗೂಗಲ್ ಮ್ಯಾಪ್ಸ್ ತೆರೆಯಿರಿ', contactTitle: 'ಸ್ಥಳ ಹುಡುಕಲು ಸಹಾಯ ಬೇಕೇ?', call: 'ಕರೆ', chat: 'ವಾಟ್ಸಾಪ್',
-    galleryTitle: 'ನಮ್ಮ ನೆನಪುಗಳು', rsvpTitle: 'ನಮ್ಮೊಂದಿಗೆ ಸಂಭ್ರಮಿಸಿ', rsvpSub: 'ನೀವು ಬರಬಹುದೇ ಎಂದು ತಿಳಿಸಿ ಮತ್ತು ನಮ್ಮ ಕಂದನಿಗೆ ಶುಭಾಶಯ ಬರೆಯಿರಿ.',
-    fName: 'ನಿಮ್ಮ ಹೆಸರು', fAttend: 'ನೀವು ಬರುವಿರಾ?', yes: 'ಹೌದು, ಬರುತ್ತೇನೆ', no: 'ಕ್ಷಮಿಸಿ, ಬರಲಾಗದು',
-    fGuests: 'ಅತಿಥಿಗಳ ಸಂಖ್ಯೆ (ನೀವೂ ಸೇರಿ)', fWishes: 'ಶುಭಾಶಯ ಮತ್ತು ಆಶೀರ್ವಾದ (ಐಚ್ಛಿಕ)', send: 'ಉತ್ತರ ಕಳುಹಿಸಿ', sending: 'ಕಳುಹಿಸಲಾಗುತ್ತಿದೆ...',
+    venueTitle: 'ಸ್ಥಳ', venueName: 'ಶ್ರೀ ಸ್ವರ್ಣ ಗೌರಿ ಕಲ್ಯಾಣ ಮಂಟಪ, ಮಾಡಾಳು',
+    maps: 'ಗೂಗಲ್ ಮ್ಯಾಪ್ಸ್ ತೆರೆಯಿರಿ',
+    galleryTitle: 'ನಮ್ಮ ನೆನಪುಗಳು', rsvpTitle: 'ನಮ್ಮೊಂದಿಗೆ ಸಂಭ್ರಮಿಸಿ', rsvpSub: 'ನಮ್ಮ ಕಂದನಿಗೆ ಶುಭಾಶಯ ಬರೆಯಿರಿ.',
+    fName: 'ನಿಮ್ಮ ಹೆಸರು', fWishes: 'ಶುಭಾಶಯ ಮತ್ತು ಆಶೀರ್ವಾದ (ಐಚ್ಛಿಕ)', send: 'ಉತ್ತರ ಕಳುಹಿಸಿ', sending: 'ಕಳುಹಿಸಲಾಗುತ್ತಿದೆ...',
     thanksH: 'ಉತ್ತರ ತಲುಪಿದೆ', thanksP: 'ನಿಮ್ಮ ಪ್ರೀತಿ ಮತ್ತು ಶುಭಾಶಯಗಳಿಗೆ ಧನ್ಯವಾದಗಳು. ನಮ್ಮ ಕಂದನನ್ನು ಆಶೀರ್ವದಿಸಲು ನೀವು ನಮ್ಮ ಸಂಭ್ರಮದಲ್ಲಿ ಭಾಗವಾಗುವುದು ನಮ್ಮ ಭಾಗ್ಯ.',
     error: 'ಉತ್ತರ ಕಳುಹಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ದಯವಿಟ್ಟು ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.',
     after: 'ನಮ್ಮೊಂದಿಗೆ ಸಂಭ್ರಮಿಸಿ ನಮ್ಮ ಕಂದನನ್ನು ಆಶೀರ್ವದಿಸಿದ್ದಕ್ಕೆ ಧನ್ಯವಾದಗಳು. ನಿಮ್ಮ ಪ್ರೀತಿ ನಮಗೆ ಅಮೂಲ್ಯ.',
-    guest: 'ಅತಿಥಿ'
   },
   te: {
     splashTitle: '✨ నామకరణ మహోత్సవం ✨', splashSub: 'మా కుటుంబాలతో కలిసి వేడుక జరుపుకోవడానికి మిమ్మల్ని ఆహ్వానిస్తున్నాము',
     open: 'ఆహ్వానాన్ని తెరవండి', scroll: 'వివరాల కోసం కిందికి స్క్రోల్ చేయండి', dear: 'ప్రియమైన',
-    invite: 'మీ ప్రేమ, ఆశీర్వాదాలు మరియు మీ ఉనికి మా కుటుంబానికి ఎంతో విలువైనవి. మా ముద్దుల చిన్నారి రాకను జరుపుకుంటూ నామకరణ కార్యక్రమానికి విచ్చేసి, నవజాత శిశువును ఆశీర్వదించండి.',
+    invite: 'మీ ప్రేమ, ఆశీర్వాదాలు, మీ రాక మా కుటుంబానికి ఎంతో విలువైనవి. మా పెద్దలు మా చిన్నారి నామకరణ వేడుక తేదీని నిర్ణయించారు. ఈ శుభ సందర్భానికి మీ కుటుంబంతో కలిసి వచ్చి మా బిడ్డను ఆశీర్వదించండి.',
     counting: 'వేడుకకు మిగిలిన సమయం', days: 'రోజులు', hours: 'గంటలు', mins: 'నిమిషాలు', secs: 'సెకన్లు',
     today: 'ఈరోజే శుభదినం!', todaySub: 'వేడుకకు రండి. రాలేని బంధువులు ప్రత్యక్ష ప్రసారం చూడవచ్చు.', live: 'ప్రత్యక్ష ప్రసారం చూడండి',
-    addGoogle: 'గూగుల్ క్యాలెండర్‌లో చేర్చండి', addIcs: '.ics డౌన్‌లోడ్', share: 'వాట్సాప్‌లో షేర్ చేయండి',
-    shareMsg: 'మా చిన్నారి నామకరణ వేడుకకు మిమ్మల్ని ఆప్యాయంగా ఆహ్వానిస్తున్నాము. - చైత్ర & చేతన్',
+    addGoogle: 'గూగుల్ క్యాలెండర్‌లో చేర్చండి',
     tabSchedule: 'కార్యక్రమం', tabVenue: 'వేదిక', tabGallery: 'గ్యాలరీ', tabRsvp: 'ప్రత్యుత్తరం',
     scheduleTitle: 'కార్యక్రమ వివరాలు', onwards: 'నుండి',
     eventTitle: 'నామకరణం & కుటుంబ కలయిక',
     eventDesc: 'ఆనందం, కృతజ్ఞతతో నిండిన హృదయాలతో, మా ముద్దుల చిన్నారి రాకను జరుపుకోవడానికి మిమ్మల్ని ఆహ్వానిస్తున్నాము. ఆశీర్వాదాలు, నవ్వులు, మధురమైన ఫోటోలు, సహపంక్తి భోజనం, బంధుమిత్రుల ప్రేమతో తల్లిదండ్రులుగా మా ఈ అందమైన అధ్యాయాన్ని ప్రారంభిద్దాం.',
-    menuH: 'భోజనం', menuP: 'కార్యక్రమం తర్వాత సంప్రదాయ శాకాహార భోజనం ఏర్పాటు చేయబడుతుంది.',
-    dressH: 'వస్త్రధారణ', dressP: 'సంప్రదాయ దుస్తులు స్వాగతం. నీలం, బంగారు రంగులు వేడుకకు నప్పుతాయి.',
     venueTitle: 'వేదిక', venueName: 'శ్రీ స్వర్ణ గౌరి కళ్యాణ మంటపం, మడలు',
-    venueNote: 'ఇక్కడ దగ్గరి గుర్తు, అరసికెరె లేదా హాసన్ నుండి దూరం, పార్కింగ్ వివరాలు చేర్చండి.',
-    maps: 'గూగుల్ మ్యాప్స్ తెరవండి', contactTitle: 'మమ్మల్ని కనుగొనడంలో సహాయం కావాలా?', call: 'కాల్', chat: 'వాట్సాప్',
-    galleryTitle: 'మా జ్ఞాపకాలు', rsvpTitle: 'మాతో కలిసి జరుపుకోండి', rsvpSub: 'మీరు రాగలరో తెలియజేయండి, మా చిన్నారికి మీ శుభాకాంక్షలు రాయండి.',
-    fName: 'మీ పేరు', fAttend: 'మీరు వస్తారా?', yes: 'అవును, వస్తాను', no: 'క్షమించండి, రాలేను',
-    fGuests: 'అతిథుల సంఖ్య (మీరు సహా)', fWishes: 'శుభాకాంక్షలు & ఆశీస్సులు (ఐచ్ఛికం)', send: 'ప్రత్యుత్తరం పంపండి', sending: 'పంపుతోంది...',
+    maps: 'గూగుల్ మ్యాప్స్ తెరవండి',
+    galleryTitle: 'మా జ్ఞాపకాలు', rsvpTitle: 'మాతో కలిసి జరుపుకోండి', rsvpSub: 'మా చిన్నారికి మీ శుభాకాంక్షలు, ఆశీర్వాదాలు రాయండి.',
+    fName: 'మీ పేరు', fWishes: 'శుభాకాంక్షలు & ఆశీస్సులు (ఐచ్ఛికం)', send: 'ప్రత్యుత్తరం పంపండి', sending: 'పంపుతోంది...',
     thanksH: 'ప్రత్యుత్తరం అందింది', thanksP: 'మీ ప్రేమకు, శుభాకాంక్షలకు ధన్యవాదాలు. మా చిన్నారిని ఆశీర్వదించడానికి మా వేడుకలో మీరు భాగం కావడం మాకు గౌరవం.',
     error: 'మీ ప్రత్యుత్తరం పంపలేకపోయాం. దయచేసి మళ్లీ ప్రయత్నించండి.',
     after: 'మాతో కలిసి వేడుక జరుపుకుని మా చిన్నారిని ఆశీర్వదించినందుకు ధన్యవాదాలు. మీ ప్రేమ మాకు ఎంతో విలువైనది.',
-    guest: 'అతిథి'
   },
   ta: {
     splashTitle: '✨ பெயர் சூட்டு விழா ✨', splashSub: 'எங்கள் குடும்பங்களுடன் இணைந்து கொண்டாட உங்களை அன்புடன் அழைக்கிறோம்',
     open: 'அழைப்பிதழைத் திறக்கவும்', scroll: 'விவரங்களுக்கு கீழே உருட்டவும்', dear: 'அன்புள்ள',
-    invite: 'உங்கள் அன்பும், ஆசியும், வருகையும் எங்கள் குடும்பத்திற்கு மிகவும் மதிப்புமிக்கவை. எங்கள் செல்லக் குழந்தையின் வருகையைக் கொண்டாடும் பெயர் சூட்டு விழாவில் கலந்துகொண்டு, பிறந்த குழந்தையை ஆசீர்வதியுங்கள்.',
+    invite: 'உங்கள் அன்பும் ஆசியும் வருகையும் எங்கள் குடும்பத்திற்கு மிகவும் மதிப்புமிக்கவை. எங்கள் பெரியவர்கள் குழந்தையின் பெயர் சூட்டு விழா தேதியைத் தீர்மானித்துள்ளனர். இந்த நிகழ்விற்கு குடும்பத்துடன் வந்து எங்கள் குழந்தையை ஆசீர்வதிக்குமாறு அன்புடன் அழைக்கிறோம்.',
     counting: 'விழாவிற்கு மீதமுள்ள நேரம்', days: 'நாட்கள்', hours: 'மணி', mins: 'நிமிடம்', secs: 'விநாடி',
     today: 'இன்றே அந்த நல்ல நாள்!', todaySub: 'விழாவிற்கு வாருங்கள். வர இயலாத உறவினர்கள் நேரலையில் காணலாம்.', live: 'நேரலையில் காண',
-    addGoogle: 'கூகுள் காலெண்டரில் சேர்க்க', addIcs: '.ics பதிவிறக்கம்', share: 'வாட்ஸ்அப்பில் பகிர',
-    shareMsg: 'எங்கள் செல்லக் குழந்தையின் பெயர் சூட்டு விழாவிற்கு உங்களை அன்புடன் அழைக்கிறோம். - சைத்ரா & சேதன்',
+    addGoogle: 'கூகுள் காலெண்டரில் சேர்க்க',
     tabSchedule: 'நிகழ்ச்சி', tabVenue: 'இடம்', tabGallery: 'படங்கள்', tabRsvp: 'பதில்',
     scheduleTitle: 'நிகழ்ச்சி விவரம்', onwards: 'முதல்',
     eventTitle: 'பெயர் சூட்டு விழா & குடும்ப சந்திப்பு',
     eventDesc: 'மகிழ்ச்சியும் நன்றியும் நிறைந்த மனதுடன், எங்கள் செல்லக் குழந்தையின் வருகையைக் கொண்டாட உங்களை அழைக்கிறோம். ஆசீர்வாதம், சிரிப்பு, இனிய புகைப்படங்கள், கூட்டு உணவு, உறவினர்கள் நண்பர்களின் அன்புடன் பெற்றோராக எங்கள் இந்த அழகான அத்தியாயத்தைத் தொடங்குவோம்.',
-    menuH: 'உணவு', menuP: 'விழாவிற்குப் பிறகு பாரம்பரிய சைவ உணவு பரிமாறப்படும்.',
-    dressH: 'உடை', dressP: 'பாரம்பரிய உடைகள் வரவேற்கப்படுகின்றன. நீலம், தங்க நிறங்கள் விழாவிற்குப் பொருத்தமாக இருக்கும்.',
     venueTitle: 'இடம்', venueName: 'ஸ்ரீ ஸ்வர்ண கௌரி கல்யாண மண்டபம், மடலு',
-    venueNote: 'அருகிலுள்ள அடையாளம், அரசிகெரே அல்லது ஹாசனில் இருந்து தூரம், வாகன நிறுத்த விவரங்களை இங்கே சேர்க்கவும்.',
-    maps: 'கூகுள் மேப்ஸ் திறக்க', contactTitle: 'எங்களைக் கண்டுபிடிக்க உதவி வேண்டுமா?', call: 'அழைக்க', chat: 'வாட்ஸ்அப்',
-    galleryTitle: 'எங்கள் நினைவுகள்', rsvpTitle: 'எங்களுடன் கொண்டாடுங்கள்', rsvpSub: 'நீங்கள் வர இயலுமா என்பதைத் தெரிவித்து, எங்கள் குழந்தைக்கு வாழ்த்துகளை எழுதுங்கள்.',
-    fName: 'உங்கள் பெயர்', fAttend: 'நீங்கள் வருவீர்களா?', yes: 'ஆம், வருகிறேன்', no: 'மன்னிக்கவும், வர இயலாது',
-    fGuests: 'விருந்தினர் எண்ணிக்கை (நீங்கள் உட்பட)', fWishes: 'வாழ்த்துகள் & ஆசிகள் (விருப்பம்)', send: 'பதில் அனுப்பு', sending: 'அனுப்புகிறது...',
+    maps: 'கூகுள் மேப்ஸ் திறக்க',
+    galleryTitle: 'எங்கள் நினைவுகள்', rsvpTitle: 'எங்களுடன் கொண்டாடுங்கள்', rsvpSub: 'எங்கள் குழந்தைக்கான உங்கள் வாழ்த்துகளையும் ஆசியையும் எழுதுங்கள்.',
+    fName: 'உங்கள் பெயர்', fWishes: 'வாழ்த்துகள் & ஆசிகள் (விருப்பம்)', send: 'பதில் அனுப்பு', sending: 'அனுப்புகிறது...',
     thanksH: 'பதில் கிடைத்தது', thanksP: 'உங்கள் அன்புக்கும் வாழ்த்துகளுக்கும் நன்றி. எங்கள் குழந்தையை ஆசீர்வதிக்க எங்கள் விழாவில் நீங்கள் பங்கேற்பது எங்களுக்குப் பெருமை.',
     error: 'உங்கள் பதிலை அனுப்ப முடியவில்லை. மீண்டும் முயற்சிக்கவும்.',
     after: 'எங்களுடன் கொண்டாடி எங்கள் குழந்தையை ஆசீர்வதித்ததற்கு நன்றி. உங்கள் அன்பு எங்களுக்கு மிகவும் மதிப்புமிக்கது.',
-    guest: 'விருந்தினர்'
   }
 };
 
-const LOCALES = { en: 'en-GB', hi: 'hi-IN', kn: 'kn-IN', te: 'te-IN', ta: 'ta-IN' };
-const NAMES = { en: ['Chaitra', 'Chethan'], hi: ['चैत्रा', 'चेतन'], kn: ['ಚೈತ್ರಾ', 'ಚೇತನ್'], te: ['చైత్ర', 'చేతన్'], ta: ['சைத்ரா', 'சேதன்'] };
+const LOCALES = { en: 'en-GB', kn: 'kn-IN', hi: 'hi-IN', te: 'te-IN', ta: 'ta-IN' };
+const NAMES = { en: ['Chaitra', 'Chethan'], kn: ['ಚೈತ್ರ', 'ಚೇತನ್'], hi: ['चैत्रा', 'चेतन'], te: ['చైత్ర', 'చేతన్'], ta: ['சைத்ரா', 'சேதன்'] };
 
 /* =====================  HELPERS  ===================== */
 const $ = id => document.getElementById(id);
@@ -573,7 +517,6 @@ if (emailReady) emailjs.init({ publicKey: EMAILJS.publicKey });
 
 const pickLang = code => (code || '').slice(0, 2).toLowerCase() in TEXT ? code.slice(0, 2).toLowerCase() : null;
 let lang = pickLang(new URLSearchParams(location.search).get('lang')) || pickLang(localStorage.getItem('lang')) || pickLang(navigator.language) || 'en';
-if (localStorage.getItem('motherTongueSelected') === '1') $('language-screen').classList.add('hidden');
 const t = key => TEXT[lang][key];
 
 /* =====================  LANGUAGE + DATES  ===================== */
@@ -600,8 +543,6 @@ function applyLanguage() {
   if (!$('rsvp-name').value || $('rsvp-name').dataset.auto) { $('rsvp-name').value = guestName; $('rsvp-name').dataset.auto = '1'; }
 
   document.querySelectorAll('.unit-label').forEach(el => { el.textContent = t(el.dataset.unit); });
-  renderContacts();
-  renderGuestOptions();
   setNames();
 }
 
@@ -611,13 +552,24 @@ $('lang-select').addEventListener('change', e => {
   applyLanguage();
 });
 
-document.querySelectorAll('.language-btn').forEach(button => button.addEventListener('click', () => {
-  lang = button.dataset.language;
+const languageScreen = $('language-screen');
+document.querySelectorAll('[data-select-language]').forEach(button => button.addEventListener('click', () => {
+  lang = button.dataset.selectLanguage;
   localStorage.setItem('lang', lang);
-  localStorage.setItem('motherTongueSelected', '1');
+  languageScreen.classList.add('hidden');
   applyLanguage();
-  $('language-screen').classList.add('hidden');
 }));
+languageScreen.addEventListener('keydown', e => {
+  if (e.key !== 'Tab') return;
+  const buttons = [...languageScreen.querySelectorAll('button')];
+  const first = buttons[0], last = buttons[buttons.length - 1];
+  if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+  else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+});
+if (!new URLSearchParams(location.search).has('lang') && !localStorage.getItem('lang')) {
+  languageScreen.classList.remove('hidden');
+  languageScreen.querySelector('button').focus();
+}
 
 /* Cover names swap */
 let swapped = false;
@@ -683,42 +635,15 @@ function tick() {
 if (LIVE_URL) { $('live-btn').href = LIVE_URL; $('live-btn').classList.remove('hidden'); }
 tick(); setInterval(tick, 1000);
 
-/* =====================  CALENDAR + SHARE  ===================== */
+/* =====================  CALENDAR  ===================== */
 const stamp = d => d.toISOString().replace(/[-:]|\.\d{3}/g, '');
 const END_DATE = new Date(EVENT_DATE.getTime() + EVENT_HOURS * 36e5);
-const EVENT_NAME = 'Naming Ceremony - Chaitra & Chethan';
+const EVENT_NAME = `${t('eventTitle')} - Chaitra & Chethan`;
 
 $('gcal-btn').href = 'https://calendar.google.com/calendar/render?' + new URLSearchParams({
   action: 'TEMPLATE', text: EVENT_NAME, dates: `${stamp(EVENT_DATE)}/${stamp(END_DATE)}`,
   details: 'Naming Ceremony & Family Gathering. ' + pageUrl, location: LOCATION
 });
-
-$('ics-btn').addEventListener('click', () => {
-  const ics = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//Naming Ceremony//EN', 'BEGIN:VEVENT',
-    `UID:naming-${EVENT_DATE.getTime()}@invitation`, `DTSTAMP:${stamp(new Date())}`,
-    `DTSTART:${stamp(EVENT_DATE)}`, `DTEND:${stamp(END_DATE)}`,
-    `SUMMARY:${EVENT_NAME}`, `LOCATION:${LOCATION.replace(/,/g, '\\,')}`, `DESCRIPTION:${pageUrl}`,
-    'BEGIN:VALARM', 'TRIGGER:-P1D', 'ACTION:DISPLAY', 'DESCRIPTION:Naming Ceremony tomorrow', 'END:VALARM',
-    'END:VEVENT', 'END:VCALENDAR'].join('\r\n');
-  const a = document.createElement('a');
-  a.href = URL.createObjectURL(new Blob([ics], { type: 'text/calendar' }));
-  a.download = 'naming-ceremony.ics';
-  a.click();
-  URL.revokeObjectURL(a.href);
-});
-
-$('share-btn').addEventListener('click', () => {
-  window.open('https://wa.me/?text=' + encodeURIComponent(`${t('shareMsg')}\n${pageUrl}`), '_blank', 'noopener');
-});
-
-/* =====================  CONTACTS  ===================== */
-function renderContacts() {
-  $('contact-list').innerHTML = CONTACTS.map(c => `
-    <div class="contact"><b>${c.name}</b>
-      <a class="btn sm" href="tel:+${c.phone}">${t('call')}</a>
-      <a class="btn sm wa" href="https://wa.me/${c.phone}" target="_blank" rel="noopener noreferrer">${t('chat')}</a>
-    </div>`).join('');
-}
 
 /* =====================  TABS  ===================== */
 document.querySelectorAll('.tab').forEach(tab => tab.addEventListener('click', () => {
@@ -766,14 +691,6 @@ document.addEventListener('keydown', e => {
 });
 
 /* =====================  RSVP  ===================== */
-function renderGuestOptions() {
-  const sel = $('rsvp-guests'), current = sel.value || '1';
-  sel.innerHTML = Array.from({ length: 10 }, (_, i) => `<option value="${i + 1}">${i + 1}</option>`).join('');
-  sel.value = current;
-}
-const attending = () => document.querySelector('input[name=attend]:checked').value === 'Yes';
-document.querySelectorAll('input[name=attend]').forEach(r =>
-  r.addEventListener('change', () => $('guests-field').classList.toggle('hidden', !attending())));
 $('rsvp-name').addEventListener('input', e => { delete e.target.dataset.auto; });
 $('rsvp-wishes').addEventListener('input', e => { $('char-count').textContent = e.target.value.length; });
 
@@ -786,8 +703,7 @@ $('rsvp-form').addEventListener('submit', async e => {
   try {
     if (emailReady) {
       await emailjs.send(EMAILJS.serviceId, EMAILJS.templateId, {
-        guest_name: name, attending: attending() ? 'Yes' : 'No',
-        guest_count: attending() ? $('rsvp-guests').value : '0',
+        guest_name: name,
         wishes: $('rsvp-wishes').value.trim() || '-',
         submitted_at: new Date().toLocaleString('en-IN')
       });
