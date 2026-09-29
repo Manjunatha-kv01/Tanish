@@ -85,7 +85,7 @@ button,input,select,textarea{font-family:inherit}
 .hero{padding:50px 30px;text-align:center;margin-bottom:40px}
 .invite-text{max-width:680px;margin:0 auto 30px;font-size:1.05rem;line-height:1.85;font-weight:500}
 .hero-carousel{width:min(100%,560px);aspect-ratio:4/3;margin:25px auto 0;perspective:1000px}
-.hero-carousel img{width:100%;height:100%;object-fit:cover;border-radius:12px;box-shadow:0 4px 15px rgba(0,0,0,.06);transform-origin:center}
+.hero-carousel img{width:100%;height:100%;object-fit:contain;background:rgba(11,37,69,.04);border-radius:12px;box-shadow:0 4px 15px rgba(0,0,0,.06);transform-origin:center}
 .hero-carousel img.flip-in{animation:photoFlip .7s ease both}
 @keyframes photoFlip{from{opacity:0;transform:rotateY(-75deg) scale(.96)}to{opacity:1;transform:rotateY(0) scale(1)}}
 .count-note{margin-top:35px;font-size:.88rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--blue)}
@@ -153,13 +153,13 @@ button,input,select,textarea{font-family:inherit}
 
 /* Gallery */
 .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px}
-.g-item{aspect-ratio:1;border-radius:10px;overflow:hidden;border:2px solid rgba(212,175,55,.2);cursor:zoom-in;padding:0;background:none}
-.g-item img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.g-item{aspect-ratio:1;border-radius:10px;overflow:hidden;border:2px solid rgba(212,175,55,.2);cursor:zoom-in;padding:0;background:rgba(11,37,69,.04)}
+.g-item img{width:100%;height:100%;object-fit:contain;transition:transform .5s}
 .g-item:hover img{transform:scale(1.08)}
 .lightbox{position:fixed;inset:0;z-index:50000;display:flex;align-items:center;justify-content:center;background:rgba(2,6,18,.94);backdrop-filter:blur(14px);opacity:0;pointer-events:none;transition:opacity .4s}
 .lightbox.active{opacity:1;pointer-events:auto}
 .lb-inner{position:relative;max-width:90vw;max-height:85vh;display:flex;flex-direction:column;align-items:center}
-.lb-inner img{max-height:75vh;object-fit:contain;border-radius:10px;border:2px solid rgba(212,175,55,.3);box-shadow:0 10px 35px rgba(0,0,0,.6)}
+.lb-inner img{max-width:90vw;max-height:75vh;object-fit:contain;border-radius:10px;border:2px solid rgba(212,175,55,.3);box-shadow:0 10px 35px rgba(0,0,0,.6)}
 .lb-caption{margin-top:14px;color:#fff;font-family:'Cinzel',serif;letter-spacing:2px;font-size:1.1rem}
 .lb-close{position:absolute;top:-45px;right:0;background:none;border:none;color:#fff;font-size:2.2rem;cursor:pointer;line-height:1}
 .lb-nav{position:absolute;top:50%;transform:translateY(-50%);width:46px;height:46px;border-radius:50%;cursor:pointer;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);color:#fff;font-size:1.5rem;transition:var(--ease)}
@@ -398,11 +398,13 @@ const EMAILJS = { publicKey: 'YOUR_PUBLIC_KEY', serviceId: 'YOUR_SERVICE_ID', te
 // Set the recipient email inside your EmailJS template, so it is not exposed in this page.
 const LOCATION = 'Sri Swarna Gauri Kalyana Mantapa, Madalu, Karnataka';
 const GALLERY = [
-  { src: 'images/ma01.jpeg',  caption: 'Our Story — Chapter One' },
-  { src: 'images/ma02.jpeg', caption: 'Our Story — Chapter Two' },
-  { src: 'images/ma04.jpeg', caption: 'Family Moment Three' },
-  { src: 'images/ma05.jpeg',  caption: 'Our Story — Chapter Four' },
-  { src: 'images/ma06.jpeg',  caption: 'Our Story — Chapter Five' }
+  { src: 'images/c1.png',  caption: 'Our Story — Chapter One' },
+  { src: 'images/c2.png', caption: 'Our Story — Chapter Two' },
+  { src: 'images/c3.png', caption: 'Family Moment Three' },
+  { src: 'images/c4.png',  caption: 'Our Story — Chapter Four' },
+  { src: 'images/c5.png',  caption: 'Our Story — Chapter Four' },
+  { src: 'images/c6.jpeg',  caption: 'Our Story — Chapter Four' },
+  { src: 'images/invit.jpg',  caption: 'Our Story — Chapter Five' }
 ];
 
 /* =====================  TEXT (English / Kannada / Hindi / Telugu / Tamil)  ===================== */
