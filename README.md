@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # ✨ Naming Ceremony Invitation ✨
 
 An interactive, responsive digital invitation single-page web application designed for the **Baby Naming Ceremony** of **Chaitra & Chethan**.
